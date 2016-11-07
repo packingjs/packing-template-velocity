@@ -1,6 +1,6 @@
 {
   "name": "packing-template-velocity",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Java velocity template middleware for express",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/zhongzhi107/packing-template-velocity#readme",
   "dependencies": {
     "clear-require": "^1.0.1",
-    "object-assign": "^4.1.0",
+    "object-assign-deep": "0.0.4",
     "velocity": "^0.7.2"
   }
 }
