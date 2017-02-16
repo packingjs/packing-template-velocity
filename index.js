@@ -26,38 +26,39 @@ module.exports = function(options) {
     if (fs.existsSync(templateAbsPath)) {
       var tpl = fs.readFileSync(templateAbsPath, {encoding: options.encoding});
       if (fs.existsSync(templateAbsPath)) {
-      var globalContext = {};
-      if (fs.existsSync(globalDataPath)) {
-        var gcontext = require(globalDataPath);
-        if (util.isFunction(gcontext)) {
-          globalContext = gcontext(req, res);
-        } else {
-          globalContext = gcontext;
+        var globalContext = {};
+        if (fs.existsSync(globalDataPath)) {
+          var gcontext = require(globalDataPath);
+          if (util.isFunction(gcontext)) {
+            globalContext = gcontext(req, res);
+          } else {
+            globalContext = gcontext;
+          }
         }
-      }
-      var pageContext = {};
-      if (fs.existsSync(dataAbsPath)) {
-        var pcontext = require(dataAbsPath);
-        if (util.isFunction(pcontext)) {
-          pageContext = pcontext(req, res);
-        } else {
-          pageContext = pcontext;
+        var pageContext = {};
+        if (fs.existsSync(dataAbsPath)) {
+          var pcontext = require(dataAbsPath);
+          if (util.isFunction(pcontext)) {
+            pageContext = pcontext(req, res);
+          } else {
+            pageContext = pcontext;
+          }
         }
-      }
-      var compiledTpl = new Velocity({
-        root: path.resolve(options.root),
-        template: templateAbsPath,
-        macro: path.resolve(options.macro)
-      });
-      try {
-        var output = compiledTpl.render(assign(globalContext, pageContext));
-        res.end(output);
-      } catch (e) {
-        console.log(e);
+        var compiledTpl = new Velocity({
+          root: path.resolve(options.root),
+          template: templateAbsPath,
+          macro: path.resolve(options.macro)
+        });
+        try {
+          var output = compiledTpl.render(assign(globalContext, pageContext));
+          res.end(output);
+        } catch (e) {
+          console.log(e);
+          next();
+        }
+      } else {
         next();
       }
-    } else {
-      next();
-    }
+    };
   };
 };

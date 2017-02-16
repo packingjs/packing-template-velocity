@@ -1,6 +1,6 @@
 {
   "name": "packing-template-velocity",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Java velocity template middleware for express",
   "main": "index.js",
   "scripts": {
