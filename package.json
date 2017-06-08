@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhongzhi107/packing-template-velocity.git"
+    "url": "git+https://github.com/packingjs/packing-template-velocity.git"
   },
   "keywords": [
     "velocity",
@@ -20,9 +20,9 @@
   "author": "zhongzhi <zhong.zhi@163.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zhongzhi107/packing-template-velocity/issues"
+    "url": "https://github.com/packingjs/packing-template-velocity/issues"
   },
-  "homepage": "https://github.com/zhongzhi107/packing-template-velocity#readme",
+  "homepage": "https://github.com/packingjs/packing-template-velocity#readme",
   "dependencies": {
     "clear-require": "^1.0.1",
     "object-assign-deep": "0.0.4",
