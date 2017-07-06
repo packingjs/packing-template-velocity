@@ -1,4 +1,5 @@
 import { existsSync } from 'fs';
+import { resolve } from 'path';
 import assign from 'object-assign-deep';
 import Velocity from 'velocity/lib/engine';
 import { getPath, getContext } from 'packing-template-util';
