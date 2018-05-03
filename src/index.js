@@ -17,8 +17,22 @@ module.exports = function(options) {
   }, options);
   return async (req, res, next) => {
     const { templatePath, pageDataPath, globalDataPath } = getPath(req, options);
-    if (existsSync(templatePath)) {
-      const context = await getContext(req, res, pageDataPath, globalDataPath);
+    const context = await getContext(req, res, pageDataPath, globalDataPath);
+    const { template, filename, basedir } = res;
+    if (template) {
+      var compiledTpl = new Velocity({
+        root: resolve(options.root),
+        template: template,
+        macro: resolve(options.macro)
+      });
+      try {
+        const output = compiledTpl.render(context);
+        res.end(output);
+      } catch (e) {
+        console.log(e);
+        next();
+      }
+    } else if (existsSync(templatePath)) {
       var compiledTpl = new Velocity({
         root: resolve(options.root),
         template: templatePath,
